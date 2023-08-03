@@ -10,10 +10,12 @@ const NewsCard = ({ article }) => {
 			boxShadow="md"
 			rounded="md"
 			p={4}
+			mx={4}
 			display="flex"
 			flexDirection="column"
-			justifyContent="center"
-			alignItems="center"
+			justifyContent="space-between"
+			transition="all 0.3s ease"
+			_hover={{ boxShadow: 'lg', transform: 'scale(1.05)', cursor: 'pointer', bg: 'blue.100'}}
 		>
 			<Text fontSize="lg" fontWeight="bold" mb={2}>
 				{article.title}

@@ -22,7 +22,8 @@ const NewsList = () => {
 	}, []);
 
 	return (
-		<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={4}>
+		<SimpleGrid columns={{ sm: 1 }} spacing={4} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+			<h1>News List</h1>
 			{articles.map((article) => (
 				<NewsCard key={article.title} article={article} />
 			))}
