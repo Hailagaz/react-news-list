@@ -10,7 +10,7 @@ const NewsList = () => {
 		const fetchArticles = async () => {
 			try {
 				const response = await axios.get(
-					'https://newsapi.org/v2/top-headlines?country=us&apiKey=a8ef46bcbd0243e282955b6c1037277b'
+					'https://newsapi.org/v2/top-headlines?country=ua&apiKey=a8ef46bcbd0243e282955b6c1037277b'
 				);
 				setArticles(response.data.articles);
 			} catch (error) {

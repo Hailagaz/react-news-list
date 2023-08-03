@@ -20,7 +20,7 @@ const NewsCard = ({ article }) => {
 			<Text fontSize="lg" fontWeight="bold" mb={2}>
 				{article.title}
 			</Text>
-			<Text fontSize="sm" color="gray.500">
+			<Text fontSize="sm" color="gray.700">
 				{article.description}
 			</Text>
 		</Box>
