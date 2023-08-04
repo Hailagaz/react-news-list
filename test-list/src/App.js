@@ -13,7 +13,7 @@ const App = () => {
 	return (
 		<ChakraProvider>
 			<NewsProvider>
-				<Router>
+				<Router basename={process.env.REACT_APP_BASENAME || '/'}>
 					<NavBar />
 					<Box pt="64px">
 						<Routes>
