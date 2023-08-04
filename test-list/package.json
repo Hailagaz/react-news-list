@@ -1,6 +1,7 @@
 {
   "name": "test-list",
   "version": "0.1.0",
+	"homepage": "https://hailagaz.github.io/react-test-case-01",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^2.1.0",
@@ -17,6 +18,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,7 +46,8 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^14.0.0"
+    "@testing-library/react": "^14.0.0",
+    "gh-pages": "^5.0.0"
   },
   "jest": {
     "transformIgnorePatterns": [

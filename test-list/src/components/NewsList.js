@@ -1,43 +1,21 @@
-import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import { SimpleGrid, Button, Heading, Input, Box, Select } from '@chakra-ui/react';
 import NewsCard from './NewsCard';
 import { NewsContext } from '../context/NewsContext';
 
 const NewsList = () => {
 	const {
-		articles: initialArticles,
+		articles,
+		selectedCountry,
 		numberOfNews,
 		searchTerm,
 		loading,
 		error,
+		setSelectedCountry,
 		handleLoadMore,
 		handleSearch,
+		filteredArticles,
 	} = useContext(NewsContext);
-
-	const [articles, setArticles] = useState(initialArticles);
-	const [selectedCountry, setSelectedCountry] = useState('ua');
-
-	useEffect(() => {
-		const fetchArticles = async () => {
-			try {
-				const response = await axios.get(
-					`https://gnews.io/api/v4/top-headlines?country=${selectedCountry}&category=general&apikey=${process.env.REACT_APP_API_KEY_GNEWS}`
-				);
-				setArticles(response.data.articles);
-			} catch (error) {
-				setArticles([]);
-			}
-		};
-
-		fetchArticles();
-	}, [selectedCountry]);
-
-	const filteredArticles = articles.filter(
-		(article) =>
-			article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			article.description.toLowerCase().includes(searchTerm.toLowerCase())
-	);
 
 	if (loading) {
 		return <Box>Loading...</Box>;
