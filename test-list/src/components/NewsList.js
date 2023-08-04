@@ -175,49 +175,210 @@
 
 
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import { SimpleGrid, Button, Heading, Input, Box } from '@chakra-ui/react';
+// import NewsCard from './NewsCard';
+// import { Link } from 'react-router-dom';
+
+// const NewsList = () => {
+// 	const [articles, setArticles] = useState([]);
+// 	const [numberOfNews, setNumberOfNews] = useState(10);
+// 	const [searchTerm, setSearchTerm] = useState('');
+// 	const [loading, setLoading] = useState(true);
+// 	const [error, setError] = useState(null);
+
+// 	useEffect(() => {
+// 		const fetchArticles = async () => {
+// 			try {
+// 				const response = await axios.get(
+// 					'https://gnews.io/api/v4/top-headlines?country=ua&category=general&apikey=39c41a9ee684ec67a1ec007731d2131e'
+// 				);
+// 				setArticles(response.data.articles);
+// 				setLoading(false);
+// 			} catch (error) {
+// 				setError(error.message);
+// 				setLoading(false);
+// 			}
+// 		};
+
+// 		fetchArticles();
+// 	}, []);
+
+// 	const handleLoadMore = () => {
+// 		setNumberOfNews((prev) => prev + 10);
+// 	};
+
+// 	const handleSearch = (event) => {
+// 		setSearchTerm(event.target.value);
+// 		setNumberOfNews(10);
+// 	};
+
+// 	const filteredArticles = articles.filter(
+// 		(article) =>
+// 			article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+// 			article.description.toLowerCase().includes(searchTerm.toLowerCase())
+// 	);
+
+// 	if (loading) {
+// 		return <Box>Loading...</Box>;
+// 	}
+
+// 	if (error) {
+// 		return <Box>{error}</Box>;
+// 	}
+
+// 	return (
+// 		<SimpleGrid
+// 			columns={{ sm: 1 }}
+// 			spacing={4}
+// 			display="flex"
+// 			flexDirection="column"
+// 			justifyContent="center"
+// 			alignItems="center"
+// 		>
+// 			<Heading as="h1" size="xl" my={4}>
+// 				News List
+// 			</Heading>
+// 			<Input
+// 				type="text"
+// 				placeholder="Search by title or description"
+// 				value={searchTerm}
+// 				onChange={handleSearch}
+// 				maxWidth="600px"
+// 				bg="white"
+// 				boxShadow="md"
+// 				rounded="md"
+// 				mb={4}
+// 			/>
+// 			{filteredArticles.slice(0, numberOfNews).map((article) => (
+// 				<NewsCard key={article.title} article={article} />
+// 			))}
+// 			{articles.length > numberOfNews && (
+// 				<Button onClick={handleLoadMore} colorScheme="blue" size="lg" mb={4}>
+// 					Load More
+// 				</Button>
+// 			)}
+// 		</SimpleGrid>
+// 	);
+// };
+
+// export default NewsList;
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import { SimpleGrid, Button, Heading, Input, Box } from '@chakra-ui/react';
+// import NewsCard from './NewsCard';
+
+// const NewsList = () => {
+// 	const [articles, setArticles] = useState([]);
+// 	const [numberOfNews, setNumberOfNews] = useState(10);
+// 	const [searchTerm, setSearchTerm] = useState('');
+// 	const [loading, setLoading] = useState(true);
+// 	const [error, setError] = useState(null);
+
+// 	useEffect(() => {
+// 		const fetchArticles = async () => {
+// 			try {
+// 				const response = await axios.get(
+// 					'https://gnews.io/api/v4/top-headlines?country=ua&category=general&apikey=39c41a9ee684ec67a1ec007731d2131e'
+// 				);
+// 				setArticles(response.data.articles);
+// 				setLoading(false);
+// 			} catch (error) {
+// 				setError(error.message);
+// 				setLoading(false);
+// 			}
+// 		};
+
+// 		fetchArticles();
+// 	}, []);
+
+// 	const handleLoadMore = () => {
+// 		setNumberOfNews((prev) => prev + 10);
+// 	};
+
+// 	const handleSearch = (event) => {
+// 		setSearchTerm(event.target.value);
+// 		setNumberOfNews(10);
+// 	};
+
+// 	const filteredArticles = articles.filter(
+// 		(article) =>
+// 			article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+// 			article.description.toLowerCase().includes(searchTerm.toLowerCase())
+// 	);
+
+// 	if (loading) {
+// 		return <Box>Loading...</Box>;
+// 	}
+
+// 	if (error) {
+// 		return <Box>{error}</Box>;
+// 	}
+
+// 	return (
+// 		<SimpleGrid columns={{ sm: 1 }} spacing={4} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+// 			<Heading as="h1" size="xl" my={4}>
+// 				News List
+// 			</Heading>
+// 			<Input
+// 				type="text"
+// 				placeholder="Search by title or description"
+// 				value={searchTerm}
+// 				onChange={handleSearch}
+// 				maxWidth="600px"
+// 				bg="white"
+// 				boxShadow="md"
+// 				rounded="md"
+// 				mb={4}
+// 			/>
+// 			{filteredArticles.slice(0, numberOfNews).map((article) => (
+// 				<NewsCard key={article.title} article={article} />
+// 			))}
+// 			{articles.length > numberOfNews && (
+// 				<Button onClick={handleLoadMore} colorScheme="blue" size="lg" mb={4}>
+// 					Load More
+// 				</Button>
+// 			)}
+// 		</SimpleGrid>
+// 	);
+// };
+
+// export default NewsList;
+
+
+
+
+
+
+
+import React, { useContext } from 'react';
 import { SimpleGrid, Button, Heading, Input, Box } from '@chakra-ui/react';
 import NewsCard from './NewsCard';
+import { NewsContext } from '../context/NewsContext';
 
 const NewsList = () => {
-	const [articles, setArticles] = useState([]);
-	const [numberOfNews, setNumberOfNews] = useState(10);
-	const [searchTerm, setSearchTerm] = useState('');
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
-
-	useEffect(() => {
-		const fetchArticles = async () => {
-			try {
-				const response = await axios.get(
-					'https://gnews.io/api/v4/top-headlines?country=ua&category=general&apikey=39c41a9ee684ec67a1ec007731d2131e'
-				);
-				setArticles(response.data.articles);
-				setLoading(false);
-			} catch (error) {
-				setError(error.message);
-				setLoading(false);
-			}
-		};
-
-		fetchArticles();
-	}, []);
-
-	const handleLoadMore = () => {
-		setNumberOfNews((prev) => prev + 10);
-	};
-
-	const handleSearch = (event) => {
-		setSearchTerm(event.target.value);
-		setNumberOfNews(10);
-	};
-
-	const filteredArticles = articles.filter(
-		(article) =>
-			article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			article.description.toLowerCase().includes(searchTerm.toLowerCase())
-	);
+	const {
+		articles,
+		numberOfNews,
+		searchTerm,
+		loading,
+		error,
+		handleLoadMore,
+		handleSearch,
+		filteredArticles,
+	} = useContext(NewsContext);
 
 	if (loading) {
 		return <Box>Loading...</Box>;
@@ -228,14 +389,7 @@ const NewsList = () => {
 	}
 
 	return (
-		<SimpleGrid
-			columns={{ sm: 1 }}
-			spacing={4}
-			display="flex"
-			flexDirection="column"
-			justifyContent="center"
-			alignItems="center"
-		>
+		<SimpleGrid columns={{ sm: 1 }} spacing={4} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
 			<Heading as="h1" size="xl" my={4}>
 				News List
 			</Heading>
