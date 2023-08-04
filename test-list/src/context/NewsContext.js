@@ -14,7 +14,7 @@ const NewsProvider = ({ children }) => {
 		const fetchArticles = async () => {
 			try {
 				const response = await axios.get(
-					'https://gnews.io/api/v4/top-headlines?country=ua&category=general&apikey=39c41a9ee684ec67a1ec007731d2131e'
+					`https://gnews.io/api/v4/top-headlines?country=ua&category=general&apikey=${process.env.REACT_APP_API_KEY_GNEWS}`
 				);
 				setArticles(response.data.articles);
 				setLoading(false);

@@ -26,8 +26,8 @@ const NavBar = () => {
 					<Link as={RouterLink} to="/about" {...linkStyles}>
 						About
 					</Link>
-					<Link as={RouterLink} to="/projects" {...linkStyles}>
-						Projects
+					<Link as={RouterLink} to="/contact" {...linkStyles}>
+						Contact
 					</Link>
 				</Flex>
 			</Center>
