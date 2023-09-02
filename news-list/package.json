@@ -1,7 +1,7 @@
 {
-  "name": "test-list",
+  "name": "news-list",
   "version": "0.1.0",
-	"homepage": "https://hailagaz.github.io/react-test-case-01",
+	"homepage": "https://hailagaz.github.io/react-news-list",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^2.1.0",
